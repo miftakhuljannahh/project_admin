@@ -120,11 +120,41 @@ class detailDataState extends State<detailData> {
                         shrinkWrap: true,
                         itemCount: 10, // Jumlah item dalam daftar
                         itemBuilder: (context, index) {
+                          final data = [
+                            'Cuti menikah',
+                            'Cuti hajatan',
+                            'Cuti melahirkan anak ke 2',
+                            'Cuti kematian',
+                            'Cuti sakit',
+                            'Cuti hajatan',
+                            'Cuti hajatan',
+                            'Cuti hajatan',
+                            'Cuti hajatan',
+                            'Cuti hajatan',
+                            'Cuti hajatan',
+                            'Cuti acara keluarga',
+                            'Cuti kecelakaan',
+                          ];
+
+                          final note = [
+                            'disetujui',
+                            'ditolak',
+                            'ditolak',
+                            'ditolak',
+                            'disetujui',
+                            'disetujui',
+                            'disetujui',
+                            'disetujui',
+                            'disetujui',
+                            'disetujui',
+                          ];
+
                           return ListTile(
                             contentPadding: EdgeInsets.symmetric(
                                 vertical: 5, horizontal: 20),
                             title: Text('Pengajuan Cuti ${index + 1}'),
-                            subtitle: Text('Cuti Menikah'),
+                            subtitle: Text(data[index]),
+                            trailing: Text(note[index]),
                             onTap: () {
                               // Tambahkan aksi ketika item daftar diklik
                             },

@@ -37,7 +37,7 @@ class LoginPageState extends State<LoginPage> {
                 ),
                 Image.asset("img/login.png", width: 250, height: 250),
                 Text(
-                  "Login",
+                  "Hello",
                   style: TextStyle(
                       color: Color(0xff000000),
                       fontSize: 30,

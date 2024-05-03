@@ -106,8 +106,10 @@ class DataKaryawanState extends State<DataKaryawan> {
           }
 
           return ListView.builder(
-            itemCount: filteredAdmin.length * 2 -
-                1, // Menambahkan 1 elemen tambahan untuk setiap garis bawah
+            itemCount: filteredAdmin.isEmpty
+                ? 0
+                : filteredAdmin.length * 2 -
+                    1, // Menambahkan 1 elemen tambahan untuk setiap garis bawah
             itemBuilder: (context, index) {
               if (index.isOdd) {
                 return Divider(); // Mengembalikan garis bawah
@@ -141,32 +143,41 @@ class DataKaryawanState extends State<DataKaryawan> {
                         showDialog(
                           context: context,
                           builder: (context) {
-                            return SimpleDialog(
-                              title: const Text('Edit Data'),
-                              children: [
-                                TextFormField(
-                                  initialValue: data['nama'],
-                                  onFieldSubmitted: (value) async {
-                                    await updateData(
-                                      dataId,
-                                      value,
-                                      data['devisi'],
-                                    );
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                TextFormField(
-                                  initialValue: data['devisi'],
-                                  onFieldSubmitted: (value) async {
-                                    await updateData(
-                                      dataId,
-                                      data['nama'] ?? "data null",
-                                      value,
-                                    );
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              ],
+                            return AlertDialog(
+                              title: Text('Edit Data'),
+                              content: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  TextFormField(
+                                    initialValue: data['nama'],
+                                    decoration: InputDecoration(
+                                      labelText: 'Nama',
+                                    ),
+                                    onFieldSubmitted: (value) async {
+                                      await updateData(
+                                        dataId,
+                                        value,
+                                        data['devisi'],
+                                      );
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                  TextFormField(
+                                    initialValue: data['devisi'],
+                                    decoration: InputDecoration(
+                                      labelText: 'Devisi',
+                                    ),
+                                    onFieldSubmitted: (value) async {
+                                      await updateData(
+                                        dataId,
+                                        data['nama'] ?? "data null",
+                                        value,
+                                      );
+                                      Navigator.pop(context);
+                                    },
+                                  ),
+                                ],
+                              ),
                             );
                           },
                         );
@@ -219,6 +230,7 @@ class DataKaryawanState extends State<DataKaryawan> {
               return AlertDialog(
                 title: const Text('Tambahkan Data'),
                 content: Form(
+                  key: _formKey,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [

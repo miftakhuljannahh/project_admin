@@ -1,5 +1,6 @@
 import 'package:project_admin/DataKaryawan.dart';
 import 'package:flutter/material.dart';
+import 'package:project_admin/pengajuan.dart';
 import 'package:project_admin/profile.dart';
 
 class home extends StatefulWidget {
@@ -140,7 +141,12 @@ class homeState extends State<home> {
                   Card(
                     margin: const EdgeInsets.all(8),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PengajuanCuti()));
+                      },
                       splashColor: Colors.blue,
                       child: Center(
                         child: Center(
@@ -148,11 +154,11 @@ class homeState extends State<home> {
                             mainAxisSize: MainAxisSize.min,
                             children: const <Widget>[
                               Icon(
-                                Icons.file_copy_rounded,
+                                Icons.book_rounded,
                                 size: 50,
                                 color: Colors.black,
                               ),
-                              Text("Pengajuan Cuti",
+                              Text(" Daftar Pengajuan Cuti",
                                   style: TextStyle(fontSize: 17.0)),
                             ],
                           ),
@@ -171,11 +177,11 @@ class homeState extends State<home> {
                             mainAxisSize: MainAxisSize.min,
                             children: const <Widget>[
                               Icon(
-                                Icons.party_mode,
+                                Icons.edit_document,
                                 size: 70,
-                                color: Colors.cyanAccent,
+                                color: Colors.black,
                               ),
-                              Text("Selebriti",
+                              Text("Ubah Masa Cuti",
                                   style: TextStyle(fontSize: 17.0)),
                             ],
                           ),
@@ -194,11 +200,11 @@ class homeState extends State<home> {
                             mainAxisSize: MainAxisSize.min,
                             children: const <Widget>[
                               Icon(
-                                Icons.party_mode,
+                                Icons.computer_sharp,
                                 size: 70,
-                                color: Colors.cyanAccent,
+                                color: Colors.black,
                               ),
-                              Text("Selebriti",
+                              Text("Laporan Cuti",
                                   style: TextStyle(fontSize: 17.0)),
                             ],
                           ),
